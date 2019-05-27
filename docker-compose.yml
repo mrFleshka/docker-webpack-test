@@ -9,6 +9,8 @@ services:
       - './.docker/nginx/conf:/etc/nginx/conf.d'
       - '.:/var/www/app'
       - './.docker/nginx/logs:/var/log/nginx'
+    environment:
+      - TZ=Europe/Moscow
     networks:
       development:
         aliases:
@@ -25,6 +27,8 @@ services:
     command: ["webpack-dev-server"]
     volumes:
       - '.:/var/www/app'
+    environment:
+      - TZ=Europe/Moscow
     networks:
       proxy-pass:
         aliases:
