@@ -12,6 +12,7 @@ docker-compose up
 Check [webpack.test](http://webpack.test)
 
 ##Features
+
  - Hot reload for scss + correct maps.
  - Dev server access without port (reverse proxy on main nginx instance).
  - Yarn as package manager (node_modules work correctly on volumes)
