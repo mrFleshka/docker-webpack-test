@@ -5,6 +5,7 @@ services:
     container_name: nginx-test
     depends_on:
       - node
+      - php
     volumes:
       - './.docker/nginx/conf:/etc/nginx/conf.d'
       - '.:/var/www/app'
@@ -33,6 +34,17 @@ services:
       proxy-pass:
         aliases:
           - node
+  php:
+    image: php:7.2-fpm-alpine
+    container_name: php-fpm-test
+    volumes:
+      - '.:/var/www/app'
+    environment:
+      - TZ=Europe/Moscow
+    networks:
+      proxy-pass:
+        aliases:
+          - php-fpm
 networks:
   proxy-pass:
   development:
