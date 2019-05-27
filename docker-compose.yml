@@ -33,4 +33,4 @@ networks:
   proxy-pass:
   development:
     external:
-      name: dev-test
+      name: develope
