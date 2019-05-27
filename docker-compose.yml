@@ -1,0 +1,36 @@
+version: '3'
+services:
+  nginx:
+    image: 'nginx:latest'
+    container_name: nginx-test
+    depends_on:
+      - node
+    volumes:
+      - './.docker/nginx/conf:/etc/nginx/conf.d'
+      - '.:/var/www/app'
+      - './.docker/nginx/logs:/var/log/nginx'
+    networks:
+      development:
+        aliases:
+          - webpack.test
+      proxy-pass:
+        aliases:
+          - nginx
+  node:
+    image: 'webpack-test-node'
+    build:
+      context: .
+      dockerfile: ./.docker/node/Dockerfile
+    container_name: node-test
+    command: ["webpack-dev-server"]
+    volumes:
+      - '.:/var/www/app'
+    networks:
+      proxy-pass:
+        aliases:
+          - node
+networks:
+  proxy-pass:
+  development:
+    external:
+      name: dev-test
