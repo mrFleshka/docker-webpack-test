@@ -1,8 +1,8 @@
-##Prepare
+## Prepare
 
 Install [DockerHoster](https://github.com/mrFleshka/docker-hoster)
 
-##Install
+## Install
 
 ```bash
 docker network create --subnet=172.25.0.0/16 develope
@@ -11,13 +11,13 @@ docker-compose up
 
 Check [webpack.test](http://webpack.test)
 
-##Features
+## Features
 
  - Hot reload for scss + correct maps.
  - Dev server access without port (reverse proxy on main nginx instance).
  - Yarn as package manager (node_modules work correctly on volumes)
 
-##For Windows users
+## For Windows users
 
 ```
 route /P add 172.25.0.0 MASK 255.255.0.0 10.0.75.2
